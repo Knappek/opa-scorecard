@@ -1,8 +1,9 @@
 name: build-and-push
 
 on:
-  release:
-    types: [published]
+  push:
+    tags:
+      - "v*.*.*"
 
 jobs:
   docker:
@@ -34,3 +35,6 @@ jobs:
           context: exporter-go
           push: true
           tags: knappek/opa_scorecard_exporter:${{ steps.get_version.outputs.VERSION }}
+
+      - name: Release
+        uses: softprops/action-gh-release@v1

@@ -31,7 +31,3 @@ jobs:
           context: exporter-go
           push: true
           tags: knappek/opa_scorecard_exporter:latest
-
-      - name: Release
-        uses: softprops/action-gh-release@v1
-        if: startsWith(github.ref, 'refs/tags/')
